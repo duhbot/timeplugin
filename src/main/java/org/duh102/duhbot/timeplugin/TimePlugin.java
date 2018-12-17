@@ -9,7 +9,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import org.duh102.duhbot.functions.*;
 
-public class TimePlugin extends ListenerAdapter implements DuhbotFunction
+public class TimePlugin extends ListenerAdapter implements ListeningPlugin
 {
   static Pattern commandPattern = Pattern.compile("^\\.(?<command>time|bongs)(?<twelve>12)?(?:[ \\t]+(?<gmtval>GMT[-+][0-9]{1,2}))?");
   static String defaultZone = TimeZone.getDefault().getDisplayName();
@@ -18,9 +18,9 @@ public class TimePlugin extends ListenerAdapter implements DuhbotFunction
   {
     return this;
   }
-  public HashMap<String,String> getHelpFunctions()
+  public Map<String,String> getHelpFunctions()
   {
-    HashMap<String,String> helpFunctions = new HashMap<String,String>();
+    Map<String,String> helpFunctions = new HashMap<String,String>();
     helpFunctions.put(".time (GMT[+-][0-12])", "Tells you the time (24h)" + zoneStr);
     helpFunctions.put(".time12 (GMT[+-][0-12])", "Tells you the time (12h)" + zoneStr);
     helpFunctions.put(".bongs (GMT[+-][0-12])", "Tells you the big ben time (24h)" + zoneStr);
